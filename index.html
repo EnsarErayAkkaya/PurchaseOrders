@@ -1,10 +1,194 @@
 <!DOCTYPE html>
-<style>
-    body {
-        margin: 0;
-    }
-</style>
+<html>
 
-<canvas></canvas>
-<script src="./index.js"></script>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            margin: 0;
+            min-width: 250px;
+        }
+
+        /* Include the padding and border in an element's total width and height */
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Remove margins and padding from the list */
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Style the list items */
+        ul li {
+            cursor: pointer;
+            position: relative;
+            padding: 12px 8px 12px 40px;
+            list-style-type: none;
+            background: #eee;
+            font-size: 18px;
+            transition: 0.2s;
+
+            /* make the list items unselectable */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Set all odd list items to a different color (zebra-stripes) */
+        ul li:nth-child(odd) {
+            background: #f9f9f9;
+        }
+
+        /* Darker background-color on hover */
+        ul li:hover {
+            background: #ddd;
+        }
+
+        /* When clicked on, add a background color and strike out text */
+        ul li.checked {
+            background: #888;
+            color: #fff;
+            text-decoration: line-through;
+        }
+
+        /* Add a "checked" mark when clicked on */
+        ul li.checked::before {
+            content: '';
+            position: absolute;
+            border-color: #fff;
+            border-style: solid;
+            border-width: 0 2px 2px 0;
+            top: 10px;
+            left: 16px;
+            transform: rotate(45deg);
+            height: 15px;
+            width: 7px;
+        }
+
+        /* Style the header */
+        .header {
+            background-color: #f44336;
+            padding: 30px 40px;
+            color: white;
+            text-align: center;
+        }
+
+        /* Clear floats after the header */
+        .header:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .addBtn:hover {
+            background-color: #bbb;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            /* Could be more or less, depending on screen size */
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <ul id="modalUL">
+                <li>
+                    <h3>Purchase Order Address</h3>
+                    <p id="PurchaseOrderAddress"></p>
+                </li>
+                <li>
+                    <h3>Purchase Order Contact Person</h3>
+                    <p id="PurchaseOrderContactPerson"></p>
+                </li>
+                <li>
+                    <h3>Purchase Order Status</h3>
+                    <p id="PurchaseOrderStatus"></p>
+                </li>
+                <li>
+                    <h3>Purchase Order Details</h3>
+                    <table id="table" style="width:100%">
+                        <tr>
+                            <td>
+                                Product SKU
+                            </td>
+                            <td>
+                                Quantity Ordered
+                            </td>
+                            <td>
+                                Unit Price
+                            </td>
+                            <td>
+                                Total Amount
+                            </td>
+                        </tr>
+                    </table>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <h3> PurchaseOrderTypeAbbreviation  –  PurchaseOrderNo </h3>
+    <ul id="myUL">
+    </ul>
+
+    <script src="./index.js"></script>
+
+</body>
+
 </html>
