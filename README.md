@@ -8,7 +8,11 @@ It was quite easy. I used the javascript and HTML for it.
 
 ## How to use ?
 -Download the project
+
 -Open terminal in project directory
+
 -Run `npm i` command on terminal
+
 -Run `npm run start` command on terminal
+
 -Open **Index.html** file on **frontend** directory
