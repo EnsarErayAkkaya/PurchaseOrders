@@ -13,6 +13,6 @@ It was quite easy. I used the javascript and HTML for it.
 
 -Run `npm i` command on terminal
 
--Run `npm run start` command on terminal
+-Run `npm start` command on terminal
 
 -Open **Index.html** file on **frontend** directory
